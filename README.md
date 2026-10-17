@@ -1,6 +1,6 @@
 # 🌸 小桃养成记 官网
 
-- 🌐 https://xiaoyan-pet.eu.cc
+- 🌐 https://xiaoyan-pet.xiaoyan-pan.eu.cc
 - 📱 APP 仓库: https://github.com/xiaoyanuser1Q/xiaoyan-pet
 - 👤 开发者: 宵檐 (xiaoyanuser1Q)
 
