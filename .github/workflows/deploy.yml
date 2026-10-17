@@ -1,0 +1,23 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Print files (debug)
+        run: ls -la
+      
+      # TODO: Cloudflare Workers deployment will be added once
+      # we have the CF API token and worker configured.
+      # For now, just verify files exist.
+      - name: Verify files
+        run: |
+          test -f index.html && echo "✅ index.html exists"
