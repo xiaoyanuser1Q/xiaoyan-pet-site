@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小桃养成记 · 官网</title>
+    <meta name="description" content="🌸 小桃养成记 - 一款养成类 Android APP，养成你的小桃，见证她的成长故事">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23ffb7d5'/><circle cx='42' cy='45' r='4' fill='%23000'/><circle cx='58' cy='45' r='4' fill='%23000'/></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #fff5fa 0%, #ffe4f1 50%, #fff0e6 100%);
+            color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            position: relative;
+        }
+        .xiao-tao {
+            display: inline-block;
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, #ffb7d5 0%, #ff9ec7 100%);
+            border-radius: 50%;
+            position: relative;
+            margin-bottom: 32px;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 20px 60px rgba(255, 158, 199, 0.4);
+        }
+        .xiao-tao::before, .xiao-tao::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 40px;
+            background: #7bc67e;
+            border-radius: 50% 0;
+            top: -10px;
+        }
+        .xiao-tao::before { left: 25px; transform: rotate(-30deg); }
+        .xiao-tao::after { right: 25px; transform: rotate(30deg) scaleX(-1); }
+        .xiao-tao .eye {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: #333;
+            border-radius: 50%;
+            top: 65px;
+        }
+        .xiao-tao .eye.l { left: 45px; }
+        .xiao-tao .eye.r { right: 45px; }
+        .xiao-tao .cheek {
+            position: absolute;
+            width: 18px;
+            height: 10px;
+            background: rgba(255, 100, 130, 0.5);
+            border-radius: 50%;
+            top: 90px;
+        }
+        .xiao-tao .cheek.l { left: 30px; }
+        .xiao-tao .cheek.r { right: 30px; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ff6fa8 0%, #ff9ec7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 14px 32px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6fa8 0%, #ff9ec7 100%);
+            color: white;
+            box-shadow: 0 8px 24px rgba(255, 111, 168, 0.35);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255, 111, 168, 0.5); }
+        .btn-secondary {
+            background: white;
+            color: #ff6fa8;
+            border: 2px solid #ffb7d5;
+        }
+        .btn-secondary:hover { background: #fff5fa; }
+        
+        .features {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .feature-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(255, 158, 199, 0.15);
+            transition: transform 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-4px); }
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .feature-desc {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .status {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            margin: 40px 20px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 8px 32px rgba(255, 158, 199, 0.1);
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: #fff5fa;
+            color: #ff6fa8;
+            border-radius: 999px;
+            font-size: 13px;
+            margin-bottom: 12px;
+            border: 1px solid #ffb7d5;
+        }
+        .status h2 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        .status p { color: #666; line-height: 1.7; }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 158, 199, 0.2);
+            margin-top: 60px;
+        }
+        footer a { color: #ff6fa8; text-decoration: none; }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; }
+            .subtitle { font-size: 15px; }
+            .xiao-tao { width: 120px; height: 120px; }
+            .xiao-tao .eye { top: 50px; width: 12px; height: 12px; }
+            .xiao-tao .eye.l { left: 34px; }
+            .xiao-tao .eye.r { right: 34px; }
+            .xiao-tao .cheek { top: 68px; }
+            .xiao-tao::before, .xiao-tao::after { width: 24px; height: 32px; top: -8px; }
+            .xiao-tao::before { left: 20px; }
+            .xiao-tao::after { right: 20px; }
+            .hero { padding: 60px 16px 40px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="xiao-tao">
+            <div class="eye l"></div>
+            <div class="eye r"></div>
+            <div class="cheek l"></div>
+            <div class="cheek r"></div>
+        </div>
+        <h1>🌸 小桃养成记</h1>
+        <p class="subtitle">养成你的小桃 · 见证一段温柔的相遇</p>
+        <div class="cta-group">
+            <a href="https://github.com/xiaoyanuser1Q/xiaoyan-pet/releases/latest" class="btn btn-primary">
+                📱 下载 APP
+            </a>
+            <a href="https://github.com/xiaoyanuser1Q/xiaoyan-pet" class="btn btn-secondary">
+                ⭐ GitHub 仓库
+            </a>
+        </div>
+    </div>
+    
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🌸</div>
+            <h3 class="feature-title">温柔的相遇</h3>
+            <p class="feature-desc">在神秘之地捡到一只粉红色的小生物，从这一刻开始，她的世界只有你。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">✨</div>
+            <h3 class="feature-title">三幕剧情</h3>
+            <p class="feature-desc">相遇 · 觉醒 · 抉择。你的每一次选择，都决定了她最终的归宿。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💫</div>
+            <h3 class="feature-title">三种结局</h3>
+            <p class="feature-desc">归途 · 永恒 · 消散。每一个结局都是一次难忘的情感体验。</p>
+        </div>
+    </div>
+    
+    <div class="status">
+        <div class="status-badge">🚧 开发中</div>
+        <h2>MVP 版本建设进行中</h2>
+        <p>
+            当前版本：<strong>v1.0.0-mvp</strong><br>
+            预计完成：<strong>2026-11 月初</strong><br><br>
+            欢迎 Star ⭐ 关注更新，或访问 GitHub 仓库查看开发进度。
+        </p>
+    </div>
+    
+    <footer>
+        <p>Made with 🌸 by 宵檐 &amp; 小桃 (AI 管家)</p>
+        <p style="margin-top: 8px;">
+            <a href="https://github.com/xiaoyanuser1Q/xiaoyan-pet">APP 仓库</a> ·
+            <a href="https://github.com/xiaoyanuser1Q/xiaoyan-pet-site">官网仓库</a> ·
+            <a href="https://xiaoyan-archive.3394073613.workers.dev/">星空小站</a>
+        </p>
+        <p style="margin-top: 16px; font-size: 11px; color: #bbb;">
+            © 2026 xiaoyanuser1Q · Apache 2.0 License
+        </p>
+    </footer>
+</body>
+</html>
