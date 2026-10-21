@@ -1,8 +1,6 @@
 name: Deploy Website
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -15,9 +13,8 @@ jobs:
       - name: Print files (debug)
         run: ls -la
       
-      # TODO: Cloudflare Workers deployment will be added once
-      # we have the CF API token and worker configured.
-      # For now, just verify files exist.
+      # TODO: Cloudflare Pages 部署已接管（wrangler pages deploy → xiaoyan-pet.eu.cc），
+      # 此 workflow 仅占位/校验，改为纯手动触发，不再因 push 自动运行。
       - name: Verify files
         run: |
           test -f index.html && echo "✅ index.html exists"
