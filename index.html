@@ -4,87 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>小桃养成记 · 官网</title>
-    <meta name="description" content="🌸 小桃养成记 - 一款养成类 Android APP，养成你的小桃，见证她的成长故事">
+    <meta name="description" content="🌸 小桃养成记 - 横屏视觉小说式养成 Android APP，养大你的小桃，见证她的成长故事">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23ffb7d5'/><circle cx='42' cy='45' r='4' fill='%23000'/><circle cx='58' cy='45' r='4' fill='%23000'/></svg>">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
-            background: linear-gradient(135deg, #fff5fa 0%, #ffe4f1 50%, #fff0e6 100%);
-            color: #333;
+            background: linear-gradient(160deg, #1a1530 0%, #2d1f3f 45%, #3d2445 100%);
+            color: #2a2a2a;
             min-height: 100vh;
             overflow-x: hidden;
         }
+        /* ===== Hero: 暗夜星空 + 小桃立绘 ===== */
         .hero {
+            position: relative;
             text-align: center;
-            padding: 80px 20px 60px;
-            position: relative;
+            padding: 56px 20px 64px;
+            background:
+                radial-gradient(ellipse 60% 45% at 50% 42%, rgba(255,178,205,0.16) 0%, transparent 70%),
+                linear-gradient(180deg, rgba(20,16,38,0) 0%, rgba(26,21,48,0.4) 100%);
+            color: #fff;
         }
-        .xiao-tao {
-            display: inline-block;
-            width: 160px;
-            height: 160px;
-            background: linear-gradient(135deg, #ffb7d5 0%, #ff9ec7 100%);
-            border-radius: 50%;
-            position: relative;
-            margin-bottom: 32px;
-            animation: float 3s ease-in-out infinite;
-            box-shadow: 0 20px 60px rgba(255, 158, 199, 0.4);
+        .hero::before {
+            content: "";
+            position: absolute; inset: 0;
+            background-image:
+                radial-gradient(1.5px 1.5px at 12% 22%, rgba(255,255,255,.7) 0, transparent 100%),
+                radial-gradient(1px 1px at 28% 68%, rgba(255,255,255,.5) 0, transparent 100%),
+                radial-gradient(1.5px 1.5px at 44% 18%, rgba(255,255,255,.6) 0, transparent 100%),
+                radial-gradient(1px 1px at 62% 55%, rgba(255,255,255,.45) 0, transparent 100%),
+                radial-gradient(2px 2px at 78% 30%, rgba(255,220,235,.7) 0, transparent 100%),
+                radial-gradient(1px 1px at 88% 72%, rgba(255,255,255,.55) 0, transparent 100%),
+                radial-gradient(1.5px 1.5px at 6% 84%, rgba(255,255,255,.4) 0, transparent 100%);
+            pointer-events: none;
         }
-        .xiao-tao::before, .xiao-tao::after {
+        .hero-portrait {
+            position: relative;
+            width: 230px;
+            height: 345px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .hero-portrait::before {
             content: "";
             position: absolute;
-            width: 30px;
-            height: 40px;
-            background: #7bc67e;
-            border-radius: 50% 0;
-            top: -10px;
-        }
-        .xiao-tao::before { left: 25px; transform: rotate(-30deg); }
-        .xiao-tao::after { right: 25px; transform: rotate(30deg) scaleX(-1); }
-        .xiao-tao .eye {
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            background: #333;
+            width: 210px; height: 210px;
+            bottom: 10px;
+            left: 50%; transform: translateX(-50%);
+            background: radial-gradient(circle, rgba(255,178,205,0.35) 0%, rgba(255,178,205,0.12) 45%, transparent 70%);
             border-radius: 50%;
-            top: 65px;
+            animation: glow 3.2s ease-in-out infinite;
         }
-        .xiao-tao .eye.l { left: 45px; }
-        .xiao-tao .eye.r { right: 45px; }
-        .xiao-tao .cheek {
-            position: absolute;
-            width: 18px;
-            height: 10px;
-            background: rgba(255, 100, 130, 0.5);
-            border-radius: 50%;
-            top: 90px;
+        .hero-portrait img {
+            position: relative;
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            transform-origin: bottom center;
+            animation: breathe 3.2s ease-in-out infinite;
+            filter: drop-shadow(0 18px 30px rgba(0,0,0,0.45));
         }
-        .xiao-tao .cheek.l { left: 30px; }
-        .xiao-tao .cheek.r { right: 30px; }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        @keyframes breathe {
+            0%, 100% { transform: translateY(0) scaleY(1); }
+            50% { transform: translateY(-4px) scaleY(1.012); }
         }
-        h1 {
+        @keyframes glow {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        .hero h1 {
             font-size: 42px;
             font-weight: 700;
             margin-bottom: 12px;
-            background: linear-gradient(135deg, #ff6fa8 0%, #ff9ec7 100%);
+            background: linear-gradient(135deg, #ffb7d5 0%, #ff8fb8 50%, #c79bff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .subtitle {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 40px;
+            font-size: 17px;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 36px;
+            line-height: 1.7;
         }
         .cta-group {
             display: flex;
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 14px;
         }
         .btn {
             padding: 14px 32px;
@@ -98,160 +108,270 @@
             gap: 8px;
         }
         .btn-primary {
-            background: linear-gradient(135deg, #ff6fa8 0%, #ff9ec7 100%);
+            background: linear-gradient(135deg, #ff8fb8 0%, #ff6fa8 100%);
             color: white;
-            box-shadow: 0 8px 24px rgba(255, 111, 168, 0.35);
+            box-shadow: 0 8px 24px rgba(255, 111, 168, 0.4);
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255, 111, 168, 0.5); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255, 111, 168, 0.55); }
         .btn-secondary {
-            background: white;
-            color: #ff6fa8;
-            border: 2px solid #ffb7d5;
+            background: rgba(255,255,255,0.08);
+            color: #ffd9e7;
+            border: 1px solid rgba(255,183,213,0.45);
+            backdrop-filter: blur(4px);
         }
-        .btn-secondary:hover { background: #fff5fa; }
-        
+        .btn-secondary:hover { background: rgba(255,255,255,0.14); }
+        .install-note {
+            margin-top: 14px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.45);
+        }
+        /* ===== 6 表情展示条 ===== */
+        .moods {
+            padding: 56px 20px 8px;
+            text-align: center;
+            color: #fff;
+        }
+        .moods h2 { font-size: 24px; margin-bottom: 8px; }
+        .moods .moods-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 30px; }
+        .moods-grid {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .mood-cell {
+            width: 110px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,183,213,0.25);
+            border-radius: 16px;
+            padding: 12px 8px 10px;
+            transition: all 0.3s;
+        }
+        .mood-cell:hover {
+            transform: translateY(-6px) scale(1.04);
+            background: rgba(255,183,213,0.14);
+            border-color: rgba(255,183,213,0.6);
+            box-shadow: 0 12px 28px rgba(255,111,168,0.25);
+        }
+        .mood-cell img {
+            width: 88px; height: 120px;
+            object-fit: contain;
+            object-position: bottom;
+        }
+        .mood-cell span {
+            display: block;
+            margin-top: 8px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.75);
+        }
+        /* ===== 功能卡 ===== */
         .features {
             max-width: 1100px;
-            margin: 40px auto;
+            margin: 56px auto 0;
             padding: 0 20px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            gap: 20px;
+            color: #333;
         }
         .feature-card {
             background: white;
-            padding: 32px 24px;
+            padding: 28px 22px;
             border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(255, 158, 199, 0.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.35);
             transition: transform 0.3s;
         }
         .feature-card:hover { transform: translateY(-4px); }
-        .feature-icon {
-            font-size: 40px;
-            margin-bottom: 16px;
-        }
-        .feature-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #333;
-        }
-        .feature-desc {
-            color: #666;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-        
+        .feature-icon { font-size: 36px; margin-bottom: 14px; }
+        .feature-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #2a2a2a; }
+        .feature-desc { color: #666; line-height: 1.7; font-size: 14px; }
+        /* ===== 版本状态 ===== */
         .status {
             text-align: center;
-            padding: 40px 20px;
+            padding: 36px 20px;
             background: white;
             margin: 40px 20px;
             border-radius: 20px;
-            max-width: 600px;
+            max-width: 640px;
             margin-left: auto;
             margin-right: auto;
-            box-shadow: 0 8px 32px rgba(255, 158, 199, 0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.35);
         }
         .status-badge {
             display: inline-block;
             padding: 6px 16px;
-            background: #fff5fa;
+            background: #fff0f7;
             color: #ff6fa8;
             border-radius: 999px;
             font-size: 13px;
             margin-bottom: 12px;
-            border: 1px solid #ffb7d5;
+            border: 1px solid #ffc4dd;
+            font-weight: 600;
         }
-        .status h2 {
-            font-size: 22px;
-            margin-bottom: 12px;
-            color: #333;
+        .status h2 { font-size: 22px; margin-bottom: 12px; color: #2a2a2a; }
+        .status p { color: #666; line-height: 1.8; font-size: 14px; }
+        .status strong { color: #ff6fa8; }
+        /* ===== 安全检测 ===== */
+        .security {
+            text-align: center;
+            padding: 36px 20px;
+            background: white;
+            margin: 0 20px 40px;
+            border-radius: 20px;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.35);
         }
-        .status p { color: #666; line-height: 1.7; }
-        
+        .security h2 { font-size: 20px; margin-bottom: 6px; color: #2a2a2a; }
+        .security .sec-hash {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 18px;
+            word-break: break-all;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        }
+        .security .sec-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            text-align: left;
+            padding: 10px 0;
+            border-bottom: 1px solid #f5f0f7;
+        }
+        .security .sec-item:last-of-type { border-bottom: none; }
+        .security .sec-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+        .security .sec-text { font-size: 13px; color: #555; line-height: 1.7; }
+        .security .sec-text strong { color: #2a2a2a; }
+        .security .sec-date { margin-top: 14px; font-size: 11px; color: #bbb; }
+        /* ===== footer ===== */
         footer {
             text-align: center;
             padding: 40px 20px;
-            color: #999;
+            color: rgba(255,255,255,0.45);
             font-size: 13px;
-            border-top: 1px solid rgba(255, 158, 199, 0.2);
-            margin-top: 60px;
+            background: rgba(0,0,0,0.25);
         }
-        footer a { color: #ff6fa8; text-decoration: none; }
-        
+        footer a { color: #ffb7d5; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
         @media (max-width: 600px) {
             h1 { font-size: 32px; }
+            .hero-portrait { width: 170px; height: 255px; }
+            .hero-portrait::before { width: 150px; height: 150px; }
             .subtitle { font-size: 15px; }
-            .xiao-tao { width: 120px; height: 120px; }
-            .xiao-tao .eye { top: 50px; width: 12px; height: 12px; }
-            .xiao-tao .eye.l { left: 34px; }
-            .xiao-tao .eye.r { right: 34px; }
-            .xiao-tao .cheek { top: 68px; }
-            .xiao-tao::before, .xiao-tao::after { width: 24px; height: 32px; top: -8px; }
-            .xiao-tao::before { left: 20px; }
-            .xiao-tao::after { right: 20px; }
-            .hero { padding: 60px 16px 40px; }
+            .hero { padding: 40px 16px 48px; }
+            .mood-cell { width: 96px; }
+            .mood-cell img { width: 74px; height: 100px; }
         }
     </style>
 </head>
 <body>
     <div class="hero">
-        <div class="xiao-tao">
-            <div class="eye l"></div>
-            <div class="eye r"></div>
-            <div class="cheek l"></div>
-            <div class="cheek r"></div>
+        <div class="hero-portrait">
+            <img src="assets/pet_happy.webp" alt="小桃 · 开心">
         </div>
         <h1>🌸 小桃养成记</h1>
-        <p class="subtitle">养成你的小桃 · 见证一段温柔的相遇</p>
+        <p class="subtitle">横屏视觉小说式陪伴体验 · 养大你的小桃<br>从初遇的一团微光，到愿意对你开口的那一句</p>
         <div class="cta-group">
-            <a href="/download/xiaoyan-pet-v1.0.0-release.apk" class="btn btn-primary">
-                📱 下载 APP（684 KB · 正式版）
+            <a href="/download/xiaoyan-pet-v1.2.0-release.apk" class="btn btn-primary">
+                📱 下载 APP（v1.2.0 · 正式版）
             </a>
-            <a href="https://github.com/xiaoyanuser1Q/xiaoyan-pet" class="btn btn-secondary">
-                ⭐ GitHub 仓库
+            <a href="https://gitee.com/xiaoyanuser/xiaoyan-pet" class="btn btn-secondary">
+                ⭐ 源码仓库（Gitee）
             </a>
-        <p style="margin-top:12px;font-size:12px;color:#999;">已从旧版 9.4MB 安装过的用户需先卸载再装新版（签名升级）。</p>
+        </div>
+        <p class="install-note">已装 v1.1.0 正式版可直接覆盖安装 · v1.0.0 / debug 版签名不同需先卸载</p>
     </div>
-    
+
+    <div class="moods">
+        <h2>她的六种心情</h2>
+        <p class="moods-sub">立绘随剧情台词自动切换 · 呼吸起伏 · 随机眨眼 · 发丝微摆</p>
+        <div class="moods-grid">
+            <div class="mood-cell"><img src="assets/pet_neutral.webp" alt="中性"><span>平静</span></div>
+            <div class="mood-cell"><img src="assets/pet_happy.webp" alt="开心"><span>开心</span></div>
+            <div class="mood-cell"><img src="assets/pet_sad.webp" alt="难过"><span>难过</span></div>
+            <div class="mood-cell"><img src="assets/pet_angry.webp" alt="生气"><span>生气</span></div>
+            <div class="mood-cell"><img src="assets/pet_shy.webp" alt="害羞"><span>害羞</span></div>
+            <div class="mood-cell"><img src="assets/pet_surprised.webp" alt="惊讶"><span>惊讶</span></div>
+        </div>
+    </div>
+
     <div class="features">
         <div class="feature-card">
-            <div class="feature-icon">🌸</div>
-            <h3 class="feature-title">温柔的相遇</h3>
-            <p class="feature-desc">在神秘之地捡到一只粉红色的小生物，从这一刻开始，她的世界只有你。</p>
+            <div class="feature-icon">🖥️</div>
+            <h3 class="feature-title">横屏沉浸</h3>
+            <p class="feature-desc">左边立绘、右边对话框，像看一部只属于她的视觉小说。状态栏自动隐藏，全屏只有你和她的对话。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎭</div>
+            <h3 class="feature-title">活立绘</h3>
+            <p class="feature-desc">她不是贴图：呼吸起伏、随机眨眼、发丝微摆，六种表情随台词自动切换，像动漫里那个会喘气的人。</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">✨</div>
-            <h3 class="feature-title">三幕剧情</h3>
-            <p class="feature-desc">相遇 · 觉醒 · 抉择。你的每一次选择，都决定了她最终的归宿。</p>
+            <h3 class="feature-title">三幕剧情 · 轻分支</h3>
+            <p class="feature-desc">相遇 · 异变 · 抉择。每幕一次二选一，注入信任、探索、理解三条暗线，随机小事件让每次陪伴都不一样。</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">💫</div>
             <h3 class="feature-title">三种结局</h3>
-            <p class="feature-desc">归途 · 永恒 · 消散。每一个结局都是一次难忘的情感体验。</p>
+            <p class="feature-desc">归途 · 永恒 · 消散。结局「永恒」里，她化人形开口说的第一句话，由你亲自来填。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">☁️</div>
+            <h3 class="feature-title">账号与云存档</h3>
+            <p class="feature-desc">登录可选。存档本地存放，一键同步到你的云账号，换手机也不丢这段故事。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⚙️</div>
+            <h3 class="feature-title">低配模式</h3>
+            <p class="feature-desc">设置里一键关闭微摆与背景动效，老手机也能流畅地陪她长大。</p>
         </div>
     </div>
-    
+
     <div class="status">
-        <div class="status-badge">🚧 开发中</div>
-        <h2>MVP 版本建设进行中</h2>
+        <div class="status-badge">🌸 正式版 v1.2.0</div>
+        <h2>立绘重制 · 横屏 VN 体验</h2>
         <p>
-            当前版本：<strong>v1.0.0-mvp</strong><br>
-            预计完成：<strong>2026-11 月初</strong><br><br>
-            欢迎 Star ⭐ 关注更新，或访问 GitHub 仓库查看开发进度。
+            当前版本：<strong>v1.2.0</strong>（versionCode 3）<br>
+            新增：横屏视觉小说 UI · 6 表情立绘与动态动画 · 剧情轻分支与随机事件<br>
+            账号与云存档 · 隐私政策 · 开源协议 MIT · 老存档无缝升级不丢档<br><br>
+            完全免费 · 无广告 · 无内购。
         </p>
     </div>
-    
+
+    <div class="security">
+        <h2>🛡️ 安全检测</h2>
+        <p class="sec-hash">v1.2.0 正式版 · SHA256: 3375a41a0d10f0a420ff5f674b83062122caf5b83c3ffcd4f17a864b39485acc</p>
+        <div class="sec-item">
+            <span class="sec-icon">✅</span>
+            <span class="sec-text"><strong>签名证书</strong>：SHA-256 <code style="font-family:ui-monospace,Menlo,monospace;">e47e48d3…</code> 与 v1.0.0 / v1.1.0 同一 keystore，覆盖安装不丢档</span>
+        </div>
+        <div class="sec-item">
+            <span class="sec-icon">✅</span>
+            <span class="sec-text"><strong>行为声明</strong>：无广告 · 无内购 · 无第三方统计 SDK · 云存档走自托管代理（路径白名单 + IP 限速）</span>
+        </div>
+        <div class="sec-item">
+            <span class="sec-icon">⏳</span>
+            <span class="sec-text"><strong>沙箱 / 多引擎扫描</strong>：待复核（微步 / VirusTotal 数据获取后更新）</span>
+        </div>
+        <p class="sec-date">哈希与证书指纹 2026-10-25 核验 · 可用 SHA256 在对应平台复核</p>
+    </div>
+
     <footer>
         <p>Made with 🌸 by 宵檐 &amp; 小桃 (AI 管家)</p>
         <p style="margin-top: 8px;">
-            <a href="https://github.com/xiaoyanuser1Q/xiaoyan-pet">APP 仓库</a> ·
+            <a href="https://gitee.com/xiaoyanuser/xiaoyan-pet">源码 · Gitee</a> ·
+            <a href="https://github.com/xiaoyanuser1Q/xiaoyan-pet">源码 · GitHub</a> ·
+            <a href="https://jihulab.com/xiaoyan_user1q/xiaoyan-pet">源码 · 极狐</a> ·
             <a href="https://github.com/xiaoyanuser1Q/xiaoyan-pet-site">官网仓库</a> ·
+            <a href="/privacy.html">隐私政策</a> ·
             <a href="https://xiaoyan-archive.3394073613.workers.dev/">星空小站</a>
         </p>
-        <p style="margin-top: 16px; font-size: 11px; color: #bbb;">
-            © 2026 xiaoyanuser1Q · Apache 2.0 License
+        <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.3);">
+            © 2026 xiaoyanuser1Q · MIT License
         </p>
     </footer>
 </body>
