@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐私政策 · 小桃养成记</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #fff5fa 0%, #ffe4f1 50%, #fff0e6 100%);
+            color: #333;
+            line-height: 1.8;
+        }
+        .wrap {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 48px 20px 80px;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px 28px;
+            box-shadow: 0 8px 32px rgba(255, 158, 199, 0.15);
+        }
+        h1 { font-size: 24px; margin-bottom: 8px; }
+        .date { font-size: 12px; color: #999; margin-bottom: 24px; }
+        h2 { font-size: 17px; margin: 22px 0 10px; color: #ff6fa8; }
+        p, li { font-size: 14px; color: #555; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 6px; }
+        a { color: #ff6fa8; text-decoration: none; }
+        .back { display: inline-block; margin-top: 28px; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="card">
+            <h1>🌸 小桃养成记 · 隐私政策</h1>
+            <p class="date">生效日期 2026-10-25 · 适用版本 v1.2.0 起</p>
+
+            <h2>一、我们收集什么</h2>
+            <ul>
+                <li><strong>不收集</strong>：设备型号、位置、通讯录、任何广告追踪数据。APP 无广告、无内购、无第三方统计 SDK。</li>
+                <li><strong>账号（可选）</strong>：启用云存档时，经 Supabase 保存你的邮箱地址与加密密码（由 Supabase 官方存储，我们看不到明文）。</li>
+                <li><strong>云存档</strong>：你主动点「同步到云」时，把游戏存档上传到你自己的 Supabase 账号（仅本人可读写，RLS 策略隔离）。</li>
+                <li><strong>登录事件</strong>：登录成功时写一条 event_logs 记录（账号 ID + 版本号 + 时间），用于问题排查。</li>
+            </ul>
+
+            <h2>二、本地数据</h2>
+            <ul>
+                <li>游戏存档、设置、云账号 token 均只存在本设备 APP 私有目录。</li>
+                <li>本地数据<strong>不参与 Android 系统备份</strong>（manifest 已设 allowBackup=false）。</li>
+            </ul>
+
+            <h2>三、第三方</h2>
+            <ul>
+                <li><strong>Supabase</strong>（云存档与账号，wigjusjcgjajpnxg…）</li>
+                <li><strong>Cloudflare</strong>（官网静态页分发 + 网络代理 Worker）</li>
+                <li><strong>agnes-ai.com</strong>（仅开发阶段生成 AI 立绘使用，APP 运行中不连接）</li>
+            </ul>
+
+            <h2>四、素材说明</h2>
+            <p>全部人物立绘由 AI（Agnes 画室）生成；背景与音频为程序化生成，均无第三方版权素材。详见官网仓库 CREDITS。</p>
+
+            <h2>五、你的权利</h2>
+            <ul>
+                <li>随时在 APP 设置页删除云存档、退出登录。</li>
+                <li>随时在 Supabase 后台删除账号与全部数据。</li>
+                <li>问题反馈 / 数据请求：通过 <a href="https://gitee.com/xiaoyanuser/xiaoyan-pet">Gitee 仓库</a> 或 <a href="https://github.com/xiaoyanuser1Q/xiaoyan-pet">GitHub 仓库</a> 提 Issue 联系宵檐。</li>
+            </ul>
+            <a class="back" href="/">← 回到首页</a>
+        </div>
+    </div>
+</body>
+</html>
