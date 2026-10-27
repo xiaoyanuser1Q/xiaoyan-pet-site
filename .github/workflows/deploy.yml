@@ -1,0 +1,20 @@
+name: Deploy Website
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Print files (debug)
+        run: ls -la
+      
+      # TODO: Cloudflare Pages 部署已接管（wrangler pages deploy → xiaoyan-pet.eu.cc），
+      # 此 workflow 仅占位/校验，改为纯手动触发，不再因 push 自动运行。
+      - name: Verify files
+        run: |
+          test -f index.html && echo "✅ index.html exists"
